@@ -9,7 +9,7 @@ def index():
     
 @app.route('/project-one')
 def project_one():
-    return render_template('project_one.html')
+    return render_template('project_one.html') 
 
 @app.route('/visualizations')
 def project_two():

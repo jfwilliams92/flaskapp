@@ -155,6 +155,25 @@ def return_figures():
                 yaxis = dict(title = 'Forest Area (square km)'),
                 )
 
+    
+    
+    graph_five = []
+    df = cleandata('data/API_SP.RUR.TOTL_DS2_en_csv_v2_9914824.csv')
+    df.columns = ['country','year','totalruralpopulation']
+    df.sort_values('totalruralpopulation', ascending=False, inplace=True)
+    df = df[df['year'] == 2015] 
+
+    graph_five.append(
+      go.Bar(
+      x = df.country.tolist(),
+      y = df.totalruralpopulation.tolist(),
+      )
+    )
+
+    layout_five = dict(title = 'Total Rural Population in 2015',
+                xaxis = dict(title = 'Country',),
+                yaxis = dict(title = 'Rural Population'),
+                )
     # TODO: Make a fifth chart from the data in API_SP.RUR.TOTL_DS2_en_csv_v2_9914824.csv
     # This csv file contains data about the total rural population for various countries over many years
     # Make a bar chart showing the rural population of these countries ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'India', 'France', 'Brazil', 'Italy', 'Canada'] in the year 2015.
@@ -171,6 +190,7 @@ def return_figures():
     figures.append(dict(data=graph_two, layout=layout_two))
     figures.append(dict(data=graph_three, layout=layout_three))
     figures.append(dict(data=graph_four, layout=layout_four))
+    figures.append(dict(data=graph_five, layout=layout_five))
     
     # TODO: append the figure five information to the figures list
     
